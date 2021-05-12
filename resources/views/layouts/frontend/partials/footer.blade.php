@@ -3,8 +3,9 @@
         <div class="pt-exebar">
             <div class="container">
                 <div class="d-flex align-items-stretch">
-                    <div class="pt-logo mr-auto">
-                        <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/logo-white.png') }}" alt="" /></a>
+                    <!-- <div class="pt-logo mr-auto"> -->
+                    <div class="menu-logo mr-auto">
+                        <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/MBSTU_Logo.png') }}" alt="" /></a>
                     </div>
                     <div class="pt-social-link">
                         <ul class="list-inline m-a0">
@@ -24,24 +25,15 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12 footer-col-4">
                     <div class="widget">
-                        <h5 class="footer-title">Sign Up For A Newsletter</h5>
-                        <p class="text-capitalize m-b20">Weekly Breaking news analysis and cutting edge advices on job searching.</p>
-                        <div class="subscribe-form m-b20">
-                            <form class="subscription-form" action="http://educhamp.themetrades.com/demo/assets/script/mailchamp.php" method="post">
-                                <div class="ajax-message"></div>
-                                <div class="input-group">
-                                    <input name="email" required="required" class="form-control" placeholder="Your Email Address" type="email">
-                                    <span class="input-group-btn">
-                                        <button name="submit" value="Submit" type="submit" class="btn"><i class="fa fa-arrow-right"></i></button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
+                        <h5 class="footer-title">Contact Us</h5>
+                        <p class="text-capitalize m-b20"><i class="fa fa-map-marker fa-2x white_space_20px" aria-hidden="true"></i>Mawlana Bhashani Science and Technology University, Santosh, Tangail - 1902, Bangladesh</p>
+                        <p class="text-capitalize m-b20"><i class="fa fa-phone fa-2x white_space_20px" aria-hidden="true"></i> +880 921 62304</p>
+                        <p class="text-capitalize m-b20"><i class="fa fa-envelope fa-2x white_space_20px" aria-hidden="true"></i> <a href="mailto:department.ict@mbstu.ac.bd"></a> department.ict@mbstu.ac.bd</p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-5 col-md-7 col-sm-12">
                     <div class="row">
-                        <div class="col-4 col-lg-4 col-md-4 col-sm-4">
+                        <!-- <div class="col-4 col-lg-4 col-md-4 col-sm-4">
                             <div class="widget footer_widget">
                                 <h5 class="footer-title">Company</h5>
                                 <ul>
@@ -73,12 +65,15 @@
                                     <li><a href="profile.html">Profile</a></li>
                                 </ul>
                             </div>
+                        </div> -->
+                        <div class="action-box">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.171922951623!2d89.88841391531768!3d24.23576498435241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdfc7edb573571%3A0xda791ddc1ce793bd!2sMawlana%20Bhashani%20Science%20and%20Technology%20University(MBSTU)!5e0!3m2!1sen!2sbd!4v1620816072617!5m2!1sen!2sbd" width="450" height="225" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-3 col-md-5 col-sm-12 footer-col-4">
                     <div class="widget widget_gallery gallery-grid-4">
-                        <h5 class="footer-title">Our Gallery</h5>
+                        <h5 class="footer-title">Our Recent Gallery</h5>
                         <ul class="magnific-image">
                             <li>
                                 <a href="{{ asset('assets/images/gallery/pic1.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic1.jpg') }}" alt=""></a>

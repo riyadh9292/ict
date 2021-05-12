@@ -5,7 +5,7 @@
                 <div class="topbar-left">
                     <ul>
                         <!-- <li><a href="faq-1.html"><i class="fa fa-question-circle"></i>Ask a Question</a></li> -->
-                        <li><a href="javascript:;"><i class="fa fa-envelope-o"></i>department.ict@mbstu.ac.bd</a></li>
+                        <li><a href="mailto:department.ict@mbstu.ac.bd"><i class="fa fa-envelope-o"></i>department.ict@mbstu.ac.bd</a></li>
                     </ul>
                 </div>
                 <div class="topbar-right">
@@ -22,7 +22,7 @@
             <div class="container clearfix">
                 <!-- Header Logo ==== -->
                 <div class="menu-logo">
-                    <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/logo-white.png') }}" alt=""></a>
+                    <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/MBSTU_Logo.png') }}" alt=""></a>
                 </div>
                 <!-- Mobile Nav Button ==== -->
                 <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
                 <!-- Navigation Menu ==== -->
                 <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
                     <div class="menu-logo">
-                        <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/logo.png') }}" alt=""></a>
+                        <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/MBSTU_Logo.png') }}" alt=""></a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ route('welcome') }}">Home</a></li>
@@ -93,6 +93,7 @@
                         <li><a href="#">Miscellaneous <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <li><a href="#">Downloadable Forms</a></li>
+                                <li><a href="#">Contact Us</a></li>
                             </ul>
                         </li>
                     </ul>
