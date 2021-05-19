@@ -1,22 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\UserController;
+use App\Http\Livewire\Users;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'admin'], function() {
+        Route::get('/dashboard' , function() {
+            return view('dashboard');
+        })->name('dashboard');
+    });
+    Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
+    Route::post('/user/create', [UserController::class, 'index'])->name('admin.user.create');
+
+    Route::group(['middleware' => 'teacher'], function() {
+        
+    });
+
+    Route::group(['middleware' => 'officer'], function() {
+        
+    });
+});

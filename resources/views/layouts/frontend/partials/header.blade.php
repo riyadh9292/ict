@@ -11,7 +11,12 @@
                 <div class="topbar-right">
                     <ul>
                         <li><a href="{{ route('login') }}">Login</a></li>
+                        @php
+                            $users = \App\Models\User::count(); 
+                        @endphp
+                        @if($users == 0)
                         <li><a href="{{ route('register') }}">Register</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

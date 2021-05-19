@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <!-- <x-jet-authentication-card-logo /> -->
+            <a href="{{ route('welcome') }}"><img style="height: 150px;" src="{{ asset('assets/images/MBSTU_Logo.png') }}" alt=""></a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
