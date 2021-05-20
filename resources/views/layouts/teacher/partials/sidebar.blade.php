@@ -29,16 +29,31 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{ route('admin.user.create.index') }}" class="ttr-material-button"><span class="ttr-label">Add New Article</span></a>
+                            <a href="{{ route('teacher.article.create.index') }}" class="ttr-material-button"><span class="ttr-label">Add New Article</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.user.index') }}" class="ttr-material-button"><span class="ttr-label">List Articles</span></a>
+                            <a href="{{ route('teacher.article.index') }}" class="ttr-material-button"><span class="ttr-label">List Articles</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="ti-clipboard"></i></span>
+                        <span class="ttr-label">Notices</span>
+                        <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('notice.create.index') }}" class="ttr-material-button"><span class="ttr-label">Create New Notice</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('notice.index') }}" class="ttr-material-button"><span class="ttr-label">List Notices</span></a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="{{ route('profile.show') }}" class="ttr-material-button">
-                        <span class="ttr-icon"><i class="ti-user"></i></span>
+                        <span class="ttr-icon"><i class="ti-settings"></i></span>
                         <span class="ttr-label">My Profile</span>
                     </a>
                 </li>

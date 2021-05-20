@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('layouts.teacher.app')
 
 @section('content')
 <main class="ttr-wrapper">
@@ -6,8 +6,8 @@
         <div class="db-breadcrumb">
             <ul class="db-breadcrumb-list">
                 <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                <li>Users</li>
-                <li>Create</li>
+                <li>Articels</li>
+                <li>Edit</li>
             </ul>
         </div>
         <div class="row">
@@ -18,61 +18,64 @@
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
                     </div>
+                    @elseif (session('danger'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('danger') }}
+                    </div>
                     @endif
                     <div class="wc-title">
-                        <h4>Create New User</h4>
+                        <h4>Edit Article</h4>
                     </div>
                     <div class="widget-inner">
-                        <form class="edit-profile m-b30" action="{{ route('admin.user.create') }}" method="POST">
+                        <form class="edit-profile m-b30" action="{{ route('teacher.article.update', $article->id) }}" method="POST">
                             @csrf
                             <div class="row">
 
                                 <div class="col-12 m-t20">
                                     <div class="ml-auto m-b5">
-                                        <h3>User Information</h3>
+                                        <h3>Edit Article Information</h3>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Full Name</label>
+                                    <label class="col-form-label">Title</label>
                                     <div>
-                                        <input class="form-control" name="name" type="text" value="" required>
+                                        <textarea class="form-control" name="title" rows="3" required>{{$article->title}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Email</label>
+                                    <label class="col-form-label">Authors (Comma Seperated)</label>
                                     <div>
-                                        <input class="form-control" name="email" type="email" value="" required>
+                                        <textarea class="form-control" name="authors" rows="3" required>{{$article->authors}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Designation</label>
+                                    <label class="col-form-label">Publisher</label>
                                     <div>
-                                        <input class="form-control" name="designation" type="text" value="" required>
+                                        <textarea class="form-control" name="publisher" rows="3" required>{{$article->publisher}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Type</label>
+                                    <label class="col-form-label">Details (e.g. Volume: XX, Issue: XX, pp.XX-YY)</label>
                                     <div>
-                                        <select class="form-control" name="type" aria-label="Default select example">
-                                            <option selected value="teacher">Teacher</option>
-                                            <option value="officer">Officer</option>
-                                            <option value="staff">Staff</option>
-                                        </select>
+                                        <textarea class="form-control" name="details" rows="3">{{$article->details}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Status</label>
+                                    <label class="col-form-label">Year</label>
                                     <div>
-                                        <select class="form-control" name="status" aria-label="Default select example">
-                                            <option selected value="active">Active</option>
-                                            <option value="on_leave">On Leave</option>
-                                        </select>
+                                        <input class="form-control" name="year" type="number" min="0" step="1" value="{{$article->year}}" required>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Password</label>
+                                    <label class="col-form-label">DOI (Optional)</label>
                                     <div>
-                                        <input class="form-control" name="password" type="password" value="" required>
+                                        <input class="form-control" name="doi" type="text" value="{{$article->doi}}">
+                                    </div>
+                                </div>
+                                <div class="form-group col-12">
+                                    <label class="col-form-label">URL (Optional)</label>
+                                    <div>
+                                        <input class="form-control" name="url" type="text" value="{{$article->url}}">
                                     </div>
                                 </div>
                                 <div class="col-12">

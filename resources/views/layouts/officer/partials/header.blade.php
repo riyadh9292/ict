@@ -9,7 +9,7 @@
         <!--logo start -->
         <div class="ttr-logo-box">
             <div>
-                <a href="{{ route('admin.dashboard') }}" class="ttr-logo">
+                <a href="{{ route('officer.dashboard') }}" class="ttr-logo">
                     <!-- <img class="ttr-logo-mobile" alt="" src="{{asset('admin_assets/images/logo-mobile.png')}}" width="30" height="30">
                     <img class="ttr-logo-desktop" alt="" src="{{asset('admin_assets/images/logo-white.png')}}" width="160" height="27"> -->
                 </a>
@@ -20,9 +20,9 @@
             <!-- header left menu start -->
             <ul class="ttr-header-navigation">
                 <li>
-                    <a href="{{ route('admin.dashboard') }}" class="ttr-material-button ttr-submenu-toggle">HOME</a>
+                    <a href="{{ route('officer.dashboard') }}" class="ttr-material-button ttr-submenu-toggle">HOME</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
                     <div class="ttr-header-submenu">
                         <ul>
@@ -31,14 +31,14 @@
                             <li><a href="#">Membership</a></li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
             </ul>
             <!-- header left menu end -->
         </div>
         <div class="ttr-header-right ttr-with-seperator">
             <!-- header right menu start -->
             <ul class="ttr-header-navigation">
-                <li>
+                <!-- <li>
                     <a href="#" class="ttr-material-button ttr-search-toggle"><i class="fa fa-search"></i></a>
                 </li>
                 <li>
@@ -113,14 +113,14 @@
                             </ul>
                         </div>
                     </div>
-                </li>
+                </li> -->
                 <li>
                     <a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="{{asset('admin_assets/images/testimonials/pic3.jpg')}}" width="32" height="32"></span></a>
                     <div class="ttr-header-submenu">
                         <ul>
-                            <li><a href="user-profile.html">My profile</a></li>
-                            <li><a href="list-view-calendar.html">Activity</a></li>
-                            <li><a href="mailbox.html">Messages</a></li>
+                            <li><a href="{{route('profile.show')}}">My profile</a></li>
+                            <!-- <li><a href="list-view-calendar.html">Activity</a></li>
+                            <li><a href="mailbox.html">Messages</a></li> -->
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
@@ -131,7 +131,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class=" ttr-hide-on-mobile">
+                <!-- <li class=" ttr-hide-on-mobile">
                     <a href="#" class="ttr-material-button"><i class="ti-layout-grid3-alt"></i></a>
                     <div class="ttr-header-submenu ttr-extra-menu">
                         <a href="#">
@@ -159,7 +159,7 @@
                             <span>Pictures</span>
                         </a>
                     </div>
-                </li>
+                </li> -->
             </ul>
             <!-- header right menu end -->
         </div>

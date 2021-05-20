@@ -14,7 +14,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = auth()->user()->articles;
+        return view('teacher.articles.index', compact('articles'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('teacher.articles.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Article::create([
+            'title' => $request->title,
+            'authors' => $request->authors,
+            'publisher' => $request->publisher,
+            'details' => $request->details,
+            'year' => $request->year,
+            'doi' => $request->doi,
+            'url' => $request->url,
+            'user_id' => auth()->user()->id,
+        ]);
+        return redirect()->route('teacher.article.index')->with('success','Article Added Successfully');
     }
 
     /**
@@ -57,7 +68,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('teacher.articles.edit' , compact('article'));
     }
 
     /**
@@ -69,7 +80,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->title = $request->title;
+        $article->authors = $request->authors;
+        $article->publisher = $request->publisher;
+        $article->details = $request->details;
+        $article->year = $request->year;
+        $article->doi = $request->doi;
+        $article->url = $request->url;
+        $article->update();
+        return redirect()->route('teacher.article.index')->with('success','Article Updated Successfully');
     }
 
     /**
@@ -80,6 +99,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return redirect()->route('teacher.article.index')->with('danger','Article Deleted Successfully');
     }
 }

@@ -68,9 +68,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit' , compact('user'));
     }
 
     /**
@@ -80,9 +80,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->designation = $request->designation;
+        $user->type = $request->type;
+        $user->status = $request->status;
+        $user->password = Hash::make($request->password);
+        $user->update();
+        return redirect()->route('admin.user.index')->with('success','User Updated Successfully');
     }
 
     /**
@@ -91,9 +98,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('admin.user.index')->with('danger','User Deleted Successfully');
     }
 
     public function sort(Request $request)
