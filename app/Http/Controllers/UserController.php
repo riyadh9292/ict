@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends Controller
@@ -15,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('position')->get();
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -25,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -36,7 +37,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $max_position = User::max('position');
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'type' => $request->type,
+            'designation' => $request->designation,
+            'status' => $request->status,
+            'password' => Hash::make($request->password),
+            'position' => $max_position + 1,
+        ]);
+
+        return redirect()->route('admin.user.index')->with('success', 'User Created Successfully.');
     }
 
     /**
@@ -82,5 +94,20 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sort(Request $request)
+    {
+        $posts = User::all();
+
+        foreach ($posts as $post) {
+            foreach ($request->users as $user) {
+                if ($user['id'] == $post->id) {
+                    $post->update(['position' => $user['position']]);
+                }
+            }
+        }
+
+        return response('Updated Successfully.', 200);
     }
 }

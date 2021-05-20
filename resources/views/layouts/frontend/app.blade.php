@@ -98,7 +98,7 @@
     <script src="{{ asset('assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
-    @yield('script')
+    @yield('scripts')
     <script>
         jQuery(document).ready(function() {
             var ttrevapi;

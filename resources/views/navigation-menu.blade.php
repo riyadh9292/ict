@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="#">
                         <!-- <x-jet-application-mark class="block h-9 w-auto" /> -->
                         <img class="block h-9 w-auto" src="{{ asset('assets/images/MBSTU_Logo.png') }}" alt="">
                     </a>
@@ -13,14 +13,15 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    @if(auth()->user()->type == 'teacher')
+                    <x-jet-nav-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('admin.user.index') }}" :active="request()->routeIs('admin.user.index')">
-                        {{ __('Users') }}
+                    @elseif(auth()->user()->type == 'officer')
+                    <x-jet-nav-link href="{{ route('officer.dashboard') }}" :active="request()->routeIs('officer.dashboard')">
+                        {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -143,14 +144,15 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            @if(auth()->user()->type == 'teacher')
+            <x-jet-nav-link href="{{ route('teacher.dashboard') }}" :active="request()->routeIs('teacher.dashboard')">
                 {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-        </div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-nav-link href="{{ route('admin.user.index') }}" :active="request()->routeIs('admin.user.index')">
-                {{ __('Users') }}
             </x-jet-nav-link>
+            @elseif(auth()->user()->type == 'officer')
+            <x-jet-nav-link href="{{ route('officer.dashboard') }}" :active="request()->routeIs('officer.dashboard')">
+                {{ __('Dashboard') }}
+            </x-jet-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

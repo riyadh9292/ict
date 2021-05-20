@@ -18,7 +18,16 @@ class Teacher
     {
         if (auth()->user()->type == 'teacher') {
             return $next($request);
-        } else {
+        } 
+        elseif (auth()->user()->type == 'admin')
+        {
+            return redirect()->route('admin.dashboard');
+        }
+        elseif (auth()->user()->type == 'officer')
+        {
+            return redirect()->route('officer.dashboard');
+        }
+        else {
             return redirect()->route('welcome');
         }
     }
