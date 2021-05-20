@@ -13,9 +13,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/dashboard' , function() {
             return view('dashboard');
         })->name('dashboard');
+        Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
+        Route::post('/user/create', [UserController::class, 'store'])->name('admin.user.create');
     });
-    Route::get('/users', [UserController::class, 'index'])->name('admin.user.index');
-    Route::post('/user/create', [UserController::class, 'index'])->name('admin.user.create');
 
     Route::group(['middleware' => 'teacher'], function() {
         
