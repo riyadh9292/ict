@@ -2268,6 +2268,15 @@ button.back-to-top {
     margin-bottom: 6px;
     font-family: roboto;
     line-height: 34px;
+    min-height: 100px;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recent-news .info-bx {

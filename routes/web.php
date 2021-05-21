@@ -4,10 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\NoticeController;
+use App\Models\Notice;
+use App\Models\Article;
 
 Route::get('/', function () {
-    return view('welcome');
+    $notices = Notice::orderBy('created_at', 'desc')->get();
+    $articles = Article::orderBy('year', 'desc')->take(10)->get();
+    return view('welcome' , compact('notices' , 'articles'));
 })->name('welcome');
+Route::get('/notices/all' , [NoticeController::class, 'show_all'])->name('notice.all');
+Route::get('/notices/details/{notice}' , [NoticeController::class, 'show'])->name('notice.details');
 
 
 Route::group(['middleware' => 'auth'], function() {
@@ -18,6 +24,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/notice/edit/{notice}', [NoticeController::class, 'edit'])->name('notice.edit');
     Route::post('/notice/update/{notice}', [NoticeController::class, 'update'])->name('notice.update');
     Route::post('/notice/destroy/{notice}', [NoticeController::class, 'destroy'])->name('notice.destroy');
+    Route::get('/notice/download/{notice}', [NoticeController::class, 'download'])->name('notice.download');
 
     Route::group(['middleware' => 'admin'], function() {
         Route::get('/dashboard/admin' , function() {

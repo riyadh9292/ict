@@ -19,11 +19,20 @@
                         {{ session('success') }}
                     </div>
                     @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="wc-title">
                         <h4>Create New Notice</h4>
                     </div>
                     <div class="widget-inner">
-                        <form class="edit-profile m-b30" action="{{ route('notice.create') }}" method="POST">
+                        <form class="edit-profile m-b30" action="{{ route('notice.create') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
@@ -47,7 +56,7 @@
                                 <div class="form-group col-12">
                                     <label class="col-form-label">File</label>
                                     <div>
-                                        <input class="form-control" name="file_path" type="file">
+                                        <input class="form-control" name="file" type="file">
                                     </div>
                                 </div>
                                 <div class="col-12">

@@ -61,7 +61,7 @@
                         <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/MBSTU_Logo.png') }}" alt=""></a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="{{ route('welcome') }}">Home</a></li>
+                        <li><a href="{{ route('welcome') }}">Home</a></li>
                         <li><a href="#">General Information <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <li><a href="#">About</a></li>
@@ -89,12 +89,12 @@
                         </li>
                         <li><a href="#">Research <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="#">Publications</a></li>
-                                <li><a href="#">Major Areas</a></li>
+                                <li><a href="#">Article List</a></li>
+                                <!-- <li><a href="#">Faculty Member Wise Article</a></li> -->
                             </ul>
                         </li>
                         <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Notices</a></li>
+                        <li><a href="{{route('notice.all')}}">Notices</a></li>
                         <li><a href="#">Miscellaneous <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <li><a href="#">Downloadable Forms</a></li>

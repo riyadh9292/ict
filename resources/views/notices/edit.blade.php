@@ -1,4 +1,4 @@
-@extends('layouts.teacher.app')
+@extends('layouts.'.$type.'.app')
 
 @section('content')
 <main class="ttr-wrapper">
@@ -6,7 +6,7 @@
         <div class="db-breadcrumb">
             <ul class="db-breadcrumb-list">
                 <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                <li>Articels</li>
+                <li>Notices</li>
                 <li>Edit</li>
             </ul>
         </div>
@@ -18,64 +18,60 @@
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
                     </div>
-                    @elseif (session('danger'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('danger') }}
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                     @endif
                     <div class="wc-title">
-                        <h4>Edit Article</h4>
+                        <h4>Edit Notice</h4>
                     </div>
                     <div class="widget-inner">
-                        <form class="edit-profile m-b30" action="{{ route('teacher.article.update', $article->id) }}" method="POST">
+                        <form class="edit-profile m-b30" action="{{ route('notice.update' , $notice->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
                                 <div class="col-12 m-t20">
                                     <div class="ml-auto m-b5">
-                                        <h3>Edit Article Information</h3>
+                                        <h3>Update Notice Information</h3>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
                                     <label class="col-form-label">Title</label>
                                     <div>
-                                        <textarea class="form-control" name="title" rows="3" required>{{$article->title}}</textarea>
+                                        <textarea class="form-control" name="title" rows="3" required>{{$notice->title}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Authors (Comma Seperated)</label>
+                                    <label class="col-form-label">Description</label>
                                     <div>
-                                        <textarea class="form-control" name="authors" rows="3" required>{{$article->authors}}</textarea>
+                                    <textarea class="form-control" name="description" rows="20">{{$notice->description}}</textarea>
                                     </div>
                                 </div>
+                                @if($notice->file_path)
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Publisher</label>
+                                    <label class="col-form-label">Old File</label>
                                     <div>
-                                        <textarea class="form-control" name="publisher" rows="3" required>{{$article->publisher}}</textarea>
+                                    <a href="{{route('notice.download' , $notice->id)}}" class="btn">Download</a>
                                     </div>
                                 </div>
+                                @else
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Details (e.g. Volume: XX, Issue: XX, pp.XX-YY)</label>
+                                    <label class="col-form-label">Old File</label>
                                     <div>
-                                        <textarea class="form-control" name="details" rows="3">{{$article->details}}</textarea>
+                                    <p>No Old File is found</p>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="form-group col-12">
-                                    <label class="col-form-label">Year</label>
+                                    <label class="col-form-label">New File</label>
                                     <div>
-                                        <input class="form-control" name="year" type="number" min="0" step="1" value="{{$article->year}}" required>
-                                    </div>
-                                </div>
-                                <div class="form-group col-12">
-                                    <label class="col-form-label">DOI (Optional)</label>
-                                    <div>
-                                        <input class="form-control" name="doi" type="text" value="{{$article->doi}}">
-                                    </div>
-                                </div>
-                                <div class="form-group col-12">
-                                    <label class="col-form-label">URL (Optional)</label>
-                                    <div>
-                                        <input class="form-control" name="url" type="text" value="{{$article->url}}">
+                                        <input class="form-control" name="file" type="file">
                                     </div>
                                 </div>
                                 <div class="col-12">
