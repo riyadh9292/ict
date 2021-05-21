@@ -98,7 +98,7 @@
                         <li><a href="#">Miscellaneous <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <li><a href="#">Downloadable Forms</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="{{route('contact')}}">Contact Us</a></li>
                             </ul>
                         </li>
                     </ul>

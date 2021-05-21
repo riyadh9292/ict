@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\MessageController;
 use App\Models\Notice;
 use App\Models\Article;
 
@@ -14,6 +15,11 @@ Route::get('/', function () {
 })->name('welcome');
 Route::get('/notices/all' , [NoticeController::class, 'show_all'])->name('notice.all');
 Route::get('/notices/details/{notice}' , [NoticeController::class, 'show'])->name('notice.details');
+Route::get('/contact-us', function () {
+    return view('contact');
+})->name('contact');
+Route::post('/message/store', [MessageController::class, 'store'])->name('message.store');
+Route::get('/reload-captcha', [MessageController::class, 'reloadCaptcha'])->name('captcha.reload');
 
 
 Route::group(['middleware' => 'auth'], function() {
