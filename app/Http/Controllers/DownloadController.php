@@ -34,7 +34,7 @@ class DownloadController extends Controller
         if (File::isFile($request['file'])) {
             $extention = $request->file->extension();
             $fileName = 'download_' . $download->id . '.' . $request->file->extension();
-            $request->file->move(public_path('notice-files'), $fileName);
+            $request->file->move(public_path('downloads'), $fileName);
 
             $download->file_path = 'downloads/' . $fileName;
             $download->file_extension = $extention;
