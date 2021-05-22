@@ -50,17 +50,6 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Article $article)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Article  $article
@@ -101,5 +90,20 @@ class ArticleController extends Controller
     {
         $article->delete();
         return redirect()->route('teacher.article.index')->with('danger','Article Deleted Successfully');
+    }
+
+    //Frontend functions
+    
+    //For Welcome Article Details
+    public function details(Article $article)
+    {
+        return view('frontend.articles.details', compact('article'));
+    }
+
+    //For Articles Tab
+    public function show_all()
+    {
+        $articles = Article::orderBy('year', 'desc')->get();
+        return view('frontend.articles.index', compact('articles'));
     }
 }

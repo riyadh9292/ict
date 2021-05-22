@@ -90,6 +90,13 @@
             <x-jet-input-error for="address" class="mt-2" />
         </div>
 
+        <!-- Education -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="education" value="{{ __('Education (Semicolon Seperated) Hint: B.Sc. : RUET; M.Sc. : KMU, South Korea; PhD : UNSW, Australia') }}" />
+            <textarea class="w-full py-2 px-3 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" id="education" wire:model.defer="state.education"></textarea>
+            <x-jet-input-error for="education" class="mt-2" />
+        </div>
+
         <!-- BIO -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="bio" value="{{ __('Bio') }}" />

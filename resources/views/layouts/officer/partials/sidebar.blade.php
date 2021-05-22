@@ -37,9 +37,30 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="ti-save"></i></span>
+                        <span class="ttr-label">Downloads</span>
+                        <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('download.create.index') }}" class="ttr-material-button"><span class="ttr-label">Add New File</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('download.index') }}" class="ttr-material-button"><span class="ttr-label">List Files</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="{{route('profile.show')}}" class="ttr-material-button">
                         <span class="ttr-icon"><i class="ti-settings"></i></span>
                         <span class="ttr-label">My Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('welcome')}}" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="ti-layout"></i></span>
+                        <span class="ttr-label">Site Home</span>
                     </a>
                 </li>
                 <li class="ttr-seperate"></li>

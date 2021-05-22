@@ -15,7 +15,7 @@
     <div class="page-banner ovbl-dark">
         <div class="container">
             <div class="page-banner-entry">
-                <h1 class="text-white"></h1>
+                <h1 class="text-white">Notice Details</h1>
             </div>
         </div>
     </div>

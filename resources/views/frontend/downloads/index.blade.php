@@ -14,7 +14,7 @@
     <div class="page-banner ovbl-dark notices-banner">
         <div class="container">
             <div class="page-banner-entry">
-                <h1 class="text-white"></h1>
+                <h1 class="text-white">Downloads</h1>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="container">
             <ul class="list-inline">
                 <li><a href="#">Home</a></li>
-                <li>Notices</li>
+                <li>Downloads</li>
             </ul>
         </div>
     </div>
@@ -37,20 +37,20 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row">
-                            @foreach($notices as $notice)
+                            @foreach($downloads as $download)
                             <div class="col-md-12 col-lg-12 col-sm-12 m-b30">
                                 <div class="cours-bx">
                                     <div class="info-bx text-center">
-                                        <h5><a href="{{route('notice.details' , $notice->id)}}">{{$notice->title}}</a></h5>
-                                        <span>Click on the title to read more</span>
+                                        <h5>{{$download->title}}</h5>
+                                        <span>{{$download->description}}</span>
                                     </div>
                                     <div class="cours-more-info">
                                         <div class="review">
-                                            <span>Published: {{$notice->created_at}}</span>
+                                            <span>Published: {{$download->created_at}}</span>
                                         </div>
                                         <div class="price">
-                                            @if($notice->file_path)
-                                            <a href="{{route('notice.download' , $notice->id)}}" class="btn">Download</a>
+                                            @if($download->file_path)
+                                            <a href="{{route('download' , $download->id)}}" class="btn">Download</a>
                                             @else
                                             <span>No file to Download</span>
                                             @endif
@@ -60,6 +60,11 @@
                             </div>
                             @endforeach
                         </div>
+                        @if(count($downloads) == 0)
+                        <div class="col-md-12 heading-bx text-center">
+                            <h2 class="title-head text-uppercase m-b0">Alert <br /> <span> There is no downloadable file at the moment..!</span></h2>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

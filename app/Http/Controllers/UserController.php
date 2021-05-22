@@ -87,6 +87,7 @@ class UserController extends Controller
         $user->designation = $request->designation;
         $user->type = $request->type;
         $user->status = $request->status;
+        $user->phone = $request->phone;
         $user->password = Hash::make($request->password);
         $user->update();
         return redirect()->route('admin.user.index')->with('success','User Updated Successfully');
@@ -117,5 +118,10 @@ class UserController extends Controller
         }
 
         return response('Updated Successfully.', 200);
+    }
+
+    public function profile(User $user)
+    {
+        return view('frontend.people.teacher.profile' , compact('user'));
     }
 }

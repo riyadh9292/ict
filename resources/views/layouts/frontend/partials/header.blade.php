@@ -10,9 +10,17 @@
                 </div>
                 <div class="topbar-right">
                     <ul>
+                        @if(auth()->check() && auth()->user()->type == 'admin')
+                        <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        @elseif(auth()->check() && auth()->user()->type == 'teacher')
+                        <li><a href="{{ route('teacher.dashboard') }}">Dashboard</a></li>
+                        @elseif(auth()->check() && auth()->user()->type == 'officer')
+                        <li><a href="{{ route('officer.dashboard') }}">Dashboard</a></li>
+                        @else
                         <li><a href="{{ route('login') }}">Login</a></li>
+                        @endif
                         @php
-                            $users = \App\Models\User::count(); 
+                        $users = \App\Models\User::count();
                         @endphp
                         @if($users == 0)
                         <li><a href="{{ route('register') }}">Register</a></li>
@@ -79,26 +87,26 @@
                             <ul class="sub-menu">
                                 <li><a href="#">Faculty Member<i class="fa fa-angle-right"></i></a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Active</a></li>
-                                        <li><a href="#">On Leave</a></li>
+                                        <li><a href="{{route('frontend.people.teacher.active')}}">Active</a></li>
+                                        <li><a href="{{route('frontend.people.teacher.onleave')}}">On Leave</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Officer</a></li>
-                                <li><a href="#">Staff</a></li>
+                                <li><a href="{{route('frontend.people.officer')}}">Officer</a></li>
+                                <li><a href="{{route('frontend.people.staff')}}">Staff</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Research <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="#">Article List</a></li>
+                                <li><a href="{{route('frontend.article.all')}}">Article List</a></li>
                                 <!-- <li><a href="#">Faculty Member Wise Article</a></li> -->
                             </ul>
                         </li>
                         <li><a href="#">Gallery</a></li>
-                        <li><a href="{{route('notice.all')}}">Notices</a></li>
+                        <li><a href="{{route('frontend.notice.all')}}">Notices</a></li>
                         <li><a href="#">Miscellaneous <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="#">Downloadable Forms</a></li>
-                                <li><a href="{{route('contact')}}">Contact Us</a></li>
+                                <li><a href="{{route('frontend.download.all')}}">Downloads</a></li>
+                                <li><a href="{{route('frontend.contact')}}">Contact Us</a></li>
                             </ul>
                         </li>
                     </ul>

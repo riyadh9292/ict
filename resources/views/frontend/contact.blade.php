@@ -65,7 +65,7 @@
                         </ul>
                     </div><br />
                     @endif
-                    <form class="contact-bx" action="{{route('message.store')}}" method="POST">
+                    <form class="contact-bx" action="{{route('frontend.message.store')}}" method="POST">
                         @csrf
                         <!-- <div class="ajax-message"></div> -->
                         <div class="heading-bx left">

@@ -101,14 +101,15 @@ class NoticeController extends Controller
         return redirect()->route('notice.index')->with('danger', 'Notice Deleted Successfully');
     }
 
+    //Frontend functions
     public function show_all()
     {
         $notices = Notice::orderBy('created_at', 'desc')->get();
-        return view('notices.frontend.index', compact('notices'));
+        return view('frontend.notices.index', compact('notices'));
     }
 
     public function show(Notice $notice)
     {
-        return view('notices.frontend.details', compact('notice'));
+        return view('frontend.notices.details', compact('notice'));
     }
 }

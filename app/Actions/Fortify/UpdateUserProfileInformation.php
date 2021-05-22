@@ -42,6 +42,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'address' => $input['address'],
                 'bio' => $input['bio'],
                 'status' => $input['status'],
+                'education' => $input['education'],
             ])->save();
         }
     }

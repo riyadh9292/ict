@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                     <div class="pt-btn-join">
-                        <a href="#" class="btn ">Contact Us</a>
+                        <a href="{{route('frontend.contact')}}" class="btn ">Contact Us</a>
                     </div>
                 </div>
             </div>
