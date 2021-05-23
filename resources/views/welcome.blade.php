@@ -8,6 +8,9 @@
     .slider-link:hover{
         color: black !important;
     }
+    .message-from-chairman-image{
+        margin-top: 13px;
+    }
 </style>
 @endsection
 
@@ -312,11 +315,12 @@
                 <div class="row">
                     <div class="col-md-4 text-center text-white">
                         <div class="action-box">
-                            <img src="{{ asset('assets/images/profile/chairman.jpg') }}" alt="">
+                            <img class="message-from-chairman-image" src="{{ asset('assets/images/profile/chairman.jpg') }}" alt="">
                         </div>
                     </div>
                     <div class="col-md-8 text-justify text-white">
                         <h2 class="text-center">Message from the Chairman</h2>
+                        <h4 class="text-center">Dr. Muhammad Shahin Uddin</h4>
                         <p>Welcome to the Department of Information and Communication Technology (ICT) which is one of the leading and prestigious departments of Mawlana Bhashani Science and Technology University (MBSTU). From the establishment of the University, the department has started its journey. And within a short period of time it has been able to produce undergraduate and graduate students who are excelling in various sectors like software development, communication sectors and in different government and non-government organizations etc. in home and abroad. Faculties are contributing in innovative research magnificently, and the department is getting recognition in the country for research contribution. The department provides a congenial environment for the growth of the students and helps them to achieve their goal by maintaining the requirements of 4the industrial revolution. The department also follows the pathways to meet the standards of Digital Bangladesh.</p>
                     </div>
                 </div>

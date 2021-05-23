@@ -1,6 +1,8 @@
 @extends('layouts.frontend.app')
 
 @section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <style>
     /* .notices-banner {
         background-image: url("{{ asset('assets/images/banner/banner3.jpg') }}")
@@ -36,24 +38,42 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row">
-                            @foreach($articles as $article)
-                            <div class="col-md-12 col-lg-12 col-sm-12 m-b30">
-                                <div class="cours-bx">
-                                    <div class="info-bx text-center">
-                                        <p>{{$article->authors}}, "{{$article->title}}", {{$article->publisher}}, {{$article->details}}, {{$article->year}}. DOI: {{$article->doi}}, URL: {{$article->url}}</p>
-                                        <!-- <span></span> -->
-                                    </div>
-                                    <div class="cours-more-info">
-                                        <div class="review">
-                                            <span>Uploaded: {{$article->created_at}}</span>
-                                        </div>
-                                        <div class="review">
-                                            <span>Uploaded By: {{$article->author->name}}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="widget-inner table-responsive">
+                                @php
+                                $count = 0;
+                                @endphp
+                                <table id="table" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th width="30px">#</th>
+                                            <th>Title</th>
+                                            <th>Authors</th>
+                                            <th>Publisher</th>
+                                            <th>Details</th>
+                                            <th>Year</th>
+                                            <th>Doi</th>
+                                            <th>URL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablecontents">
+                                        @foreach($articles as $article)
+                                        @php
+                                        $count++;
+                                        @endphp
+                                        <tr>
+                                            <td class="pl-3">{{$count}}</td>
+                                            <td>{{ $article->title }}</td>
+                                            <td>{{ $article->authors }}</td>
+                                            <td>{{ $article->publisher }}</td>
+                                            <td>{{ $article->details }}</td>
+                                            <td>{{ $article->year }}</td>
+                                            <td>{{ $article->doi }}</td>
+                                            <td>{{ $article->url }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -66,4 +86,13 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#table').DataTable();
+    });
+</script>
 @endsection

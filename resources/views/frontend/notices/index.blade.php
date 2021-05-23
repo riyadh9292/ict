@@ -41,7 +41,7 @@
                             <div class="col-md-12 col-lg-12 col-sm-12 m-b30">
                                 <div class="cours-bx">
                                     <div class="info-bx text-center">
-                                        <h5><a href="{{route('notice.details' , $notice->id)}}">{{$notice->title}}</a></h5>
+                                        <h5><a href="{{route('frontend.notice.details' , $notice->id)}}">{{$notice->title}}</a></h5>
                                         <span>Click on the title to read more</span>
                                     </div>
                                     <div class="cours-more-info">

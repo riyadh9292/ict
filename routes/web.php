@@ -6,6 +6,8 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\PhotoController;
 use App\Models\Notice;
 use App\Models\Article;
 use App\Models\User;
@@ -48,6 +50,8 @@ Route::get('/people/faculty-member/profile/{user}', [UserController::class, 'pro
 Route::get('/downloads/download/{download}', [DownloadController::class, 'download'])->name('download');
 Route::get('/downloads/all', [DownloadController::class, 'show_all'])->name('frontend.download.all');
 
+Route::get('/gallery', [AlbumController::class, 'gallery'])->name('frontend.gallery.all');
+
 //Middleware
 Route::group(['middleware' => 'auth'], function () {
 
@@ -65,6 +69,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/download/edit/{download}', [DownloadController::class, 'edit'])->name('download.edit');
     Route::post('/download/update/{download}', [DownloadController::class, 'update'])->name('download.update');
     Route::post('/download/destroy/{download}', [DownloadController::class, 'destroy'])->name('download.destroy');
+
+    Route::get('/album/new', [AlbumController::class, 'create'])->name('album.create.index');
+    Route::post('/album/create', [AlbumController::class, 'store'])->name('album.create');
+    Route::get('/albums', [AlbumController::class, 'index'])->name('album.index');
+    Route::get('/album/edit/{album}', [AlbumController::class, 'edit'])->name('album.edit');
+    Route::post('/album/update/{album}', [AlbumController::class, 'update'])->name('album.update');
+    Route::post('/album/destroy/{album}', [AlbumController::class, 'destroy'])->name('album.destroy');
+
+    Route::post('/photo/destroy/{photo}', [PhotoController::class, 'destroy'])->name('photo.destroy');
 
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/dashboard/admin', function () {

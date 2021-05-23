@@ -53,6 +53,21 @@
                 </li>
                 <li>
                     <a href="#" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="ti-image"></i></span>
+                        <span class="ttr-label">Albums</span>
+                        <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('album.create.index') }}" class="ttr-material-button"><span class="ttr-label">Create New Album</span></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('album.index') }}" class="ttr-material-button"><span class="ttr-label">List Albums</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="ttr-material-button">
                         <span class="ttr-icon"><i class="ti-save"></i></span>
                         <span class="ttr-label">Downloads</span>
                         <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>

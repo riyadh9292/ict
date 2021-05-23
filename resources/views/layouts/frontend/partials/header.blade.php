@@ -73,8 +73,6 @@
                         <li><a href="#">General Information <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <li><a href="#">About</a></li>
-                                <li><a href="#">Activities</a></li>
-                                <li><a href="#">Facilities</a></li>
                                 <li><a href="#">Programs<i class="fa fa-angle-right"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="#">Undergraduate</a></li>
@@ -101,7 +99,7 @@
                                 <!-- <li><a href="#">Faculty Member Wise Article</a></li> -->
                             </ul>
                         </li>
-                        <li><a href="#">Gallery</a></li>
+                        <li><a href="{{route('frontend.gallery.all')}}">Gallery</a></li>
                         <li><a href="{{route('frontend.notice.all')}}">Notices</a></li>
                         <li><a href="#">Miscellaneous <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">

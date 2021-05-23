@@ -52,7 +52,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/css/dashboard.css')}}">
     <link class="skin" rel="stylesheet" type="text/css" href="{{asset('admin_assets/css/color/color-1.css')}}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css">
-
+    @yield('styles')
 </head>
 
 <body class="ttr-opened-sidebar ttr-pinned-sidebar">
