@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="cours-more-info">
                                         <div class="review">
-                                            <span>Uploaded: {{$article->created_at}}</span>
+                                            <span class="text-capitalize">Type: {{$article->type}}</span>
                                         </div>
                                         <div class="review">
                                             <span>By: {{$article->author->name}}</span>

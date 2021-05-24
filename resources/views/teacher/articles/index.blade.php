@@ -1,5 +1,10 @@
 @extends('layouts.teacher.app')
 
+@section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+@endsection
+
 @section('content')
 <main class="ttr-wrapper">
     <div class="container-fluid">
@@ -30,7 +35,7 @@
                         @php
                         $count = 0;
                         @endphp
-                        <table id="table" class="table table-bordered">
+                        <table id="table" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th width="30px">#</th>
@@ -38,6 +43,7 @@
                                     <th>Authors</th>
                                     <th>Publisher</th>
                                     <th>Details</th>
+                                    <th>Type</th>
                                     <th>Year</th>
                                     <th>Doi</th>
                                     <th>URL</th>
@@ -55,6 +61,7 @@
                                     <td>{{ $article->authors }}</td>
                                     <td>{{ $article->publisher }}</td>
                                     <td>{{ $article->details }}</td>
+                                    <td class="text-capitalize">{{ $article->type }}</td>
                                     <td>{{ $article->year }}</td>
                                     <td>{{ $article->doi }}</td>
                                     <td>{{ $article->url }}</td>
@@ -79,8 +86,8 @@
 @endsection
 
 @section('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
     $(function() {

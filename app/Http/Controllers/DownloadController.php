@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Download;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -24,7 +25,7 @@ class DownloadController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'mimes:jpeg,jpg,png,doc,docx,pdf,xls,xlsx,docx',
+            'file' => 'mimes:jpeg,jpg,png,doc,docx,pdf,xls,xlsx,docx,zip',
         ]);
 
         $download = Download::create([
@@ -64,7 +65,7 @@ class DownloadController extends Controller
     {
         if (File::isFile($request['file'])) {
             $request->validate([
-                'file' => 'mimes:jpeg,jpg,png,doc,docx,pdf,xls,xlsx,docx',
+                'file' => 'mimes:jpeg,jpg,png,doc,docx,pdf,xls,xlsx,docx,zip',
             ]);
 
             if ($download->file_path) {
@@ -103,8 +104,9 @@ class DownloadController extends Controller
     //Frontend functions
     public function show_all()
     {
+        $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
         $downloads = Download::orderBy('created_at', 'desc')->get();
-        return view('frontend.downloads.index', compact('downloads'));
+        return view('frontend.downloads.index', compact('downloads' , 'photos'));
     }
 
 }

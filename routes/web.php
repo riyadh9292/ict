@@ -11,16 +11,23 @@ use App\Http\Controllers\PhotoController;
 use App\Models\Notice;
 use App\Models\Article;
 use App\Models\User;
+use App\Models\Photo;
+
+// Route::get('/linkstorage', function () {
+//     Artisan::call('storage:link');
+// });
 
 Route::get('/', function () {
     $notices = Notice::orderBy('created_at', 'desc')->get();
     $articles = Article::orderBy('year', 'desc')->take(10)->get();
-    return view('welcome', compact('notices', 'articles'));
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('welcome', compact('notices', 'articles', 'photos'));
 })->name('welcome');
 Route::get('/notices/all', [NoticeController::class, 'show_all'])->name('frontend.notice.all');
 Route::get('/notices/details/{notice}', [NoticeController::class, 'show'])->name('frontend.notice.details');
 Route::get('/contact-us', function () {
-    return view('frontend.contact');
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.contact', compact('photos'));
 })->name('frontend.contact');
 
 Route::post('/message/store', [MessageController::class, 'store'])->name('frontend.message.store');
@@ -30,20 +37,24 @@ Route::get('/article/all', [ArticleController::class, 'show_all'])->name('fronte
 Route::get('/article/details/{article}', [ArticleController::class, 'details'])->name('frontend.article.details');
 
 Route::get('/people/faculty-member/active', function () {
-    $users = User::where('type' , 'teacher')->where('status' , 'active')->orderBy('position' , 'ASC')->get();
-    return view('frontend.people.teacher.active' , compact('users'));
+    $users = User::where('type', 'teacher')->where('status', 'active')->orderBy('position', 'ASC')->get();
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.people.teacher.active', compact('users', 'photos'));
 })->name('frontend.people.teacher.active');
 Route::get('/people/faculty-member/on-leave', function () {
-    $users = User::where('type' , 'teacher')->where('status' , 'on_leave')->orderBy('position' , 'ASC')->get();
-    return view('frontend.people.teacher.onleave' , compact('users'));
+    $users = User::where('type', 'teacher')->where('status', 'on_leave')->orderBy('position', 'ASC')->get();
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.people.teacher.onleave', compact('users', 'photos'));
 })->name('frontend.people.teacher.onleave');
 Route::get('/people/officer', function () {
-    $users = User::where('type' , 'officer')->where('status' , 'active')->orderBy('position' , 'ASC')->get();
-    return view('frontend.people.officer.index' , compact('users'));
+    $users = User::where('type', 'officer')->where('status', 'active')->orderBy('position', 'ASC')->get();
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.people.officer.index', compact('users', 'photos'));
 })->name('frontend.people.officer');
 Route::get('/people/staff', function () {
-    $users = User::where('type' , 'staff')->where('status' , 'active')->orderBy('position' , 'ASC')->get();
-    return view('frontend.people.staff.index' , compact('users'));
+    $users = User::where('type', 'staff')->where('status', 'active')->orderBy('position', 'ASC')->get();
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.people.staff.index', compact('users', 'photos'));
 })->name('frontend.people.staff');
 Route::get('/people/faculty-member/profile/{user}', [UserController::class, 'profile'])->name('frontend.teacher.profile');
 
@@ -51,6 +62,37 @@ Route::get('/downloads/download/{download}', [DownloadController::class, 'downlo
 Route::get('/downloads/all', [DownloadController::class, 'show_all'])->name('frontend.download.all');
 
 Route::get('/gallery', [AlbumController::class, 'gallery'])->name('frontend.gallery.all');
+
+Route::get('/history', function () {
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.history', compact('photos'));
+})->name('frontend.history');
+
+Route::get('/mission-and-vision', function () {
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.mission-and-vision', compact('photos'));
+})->name('frontend.mission-and-vision');
+
+Route::get('/message-from-the-chairman', function () {
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.message-from-the-chairman', compact('photos'));
+})->name('frontend.message-from-the-chairman');
+
+Route::get('/programs/undergraduate', function () {
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.program.undergraduate', compact('photos'));
+})->name('frontend.program.undergraduate');
+
+Route::get('/programs/graduate', function () {
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.program.graduate', compact('photos'));
+})->name('frontend.program.graduate');
+
+Route::get('/facilities', function () {
+    $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+    return view('frontend.facilities', compact('photos'));
+})->name('frontend.facilities');
+
 
 //Middleware
 Route::group(['middleware' => 'auth'], function () {
@@ -78,6 +120,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/album/destroy/{album}', [AlbumController::class, 'destroy'])->name('album.destroy');
 
     Route::post('/photo/destroy/{photo}', [PhotoController::class, 'destroy'])->name('photo.destroy');
+
+    Route::get('/messages', [MessageController::class, 'index'])->name('message.index');
+
 
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/dashboard/admin', function () {

@@ -82,6 +82,12 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="{{route('message.index')}}" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="ti-email"></i></span>
+                        <span class="ttr-label">Messages</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('profile.show')}}" class="ttr-material-button">
                         <span class="ttr-icon"><i class="ti-settings"></i></span>
                         <span class="ttr-label">My Profile</span>

@@ -11,7 +11,7 @@
         <div class="db-breadcrumb">
             <ul class="db-breadcrumb-list">
                 <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                <li>Notices</li>
+                <li>Messages</li>
                 <li>List</li>
             </ul>
         </div>
@@ -38,7 +38,7 @@
                     </div>
                     @endif
                     <div class="wc-title">
-                        <h4>Existing Notices</h4>
+                        <h4>Messages</h4>
                     </div>
                     <div class="widget-inner table-responsive">
                         @php
@@ -48,35 +48,27 @@
                             <thead>
                                 <tr>
                                     <th width="30px">#</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Created At</th>
-                                    <th>File</th>
-                                    <th>Action</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Subject</th>
+                                    <th>Received at</th>
+                                    <th>Message</th>
                                 </tr>
                             </thead>
                             <tbody id="tablecontents">
-                                @foreach($notices as $notice)
+                                @foreach($messages as $message)
                                 @php
                                 $count++;
                                 @endphp
                                 <tr>
                                     <td>{{ $count }}</td>
-                                    <td>{{ $notice->title }}</td>
-                                    <td>{{ $notice->description }}</td>
-                                    <td>{{ $notice->created_at }}</td>
-                                    <td>
-                                        @if($notice->file_path)
-                                        <a href="{{route('notice.download' , $notice->id)}}" class="btn btn-success">Download</a>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{route('notice.edit', $notice->id) }}" class="btn btn-info btn-sm mb-2">Edit</a>
-                                        <form action="{{route('notice.destroy', $notice->id)}}" method="POST">
-                                            @csrf
-                                            <button class="btn btn-sm btn-danger btn-delete-form" type="submit">Delete</button>
-                                        </form>
-                                    </td>
+                                    <td>{{ $message->name }}</td>
+                                    <td>{{ $message->email }}</td>
+                                    <td>{{ $message->phone }}</td>
+                                    <td>{{ $message->subject }}</td>
+                                    <td>{{ $message->created_at }}</td>
+                                    <td>{{ $message->message }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -93,29 +85,11 @@
 @section('scripts')
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
-    $(function() {
-        $("#table").DataTable({});
-    });
-
-    $('.btn-delete-form').on('click', function(e) {
-        e.preventDefault();
-        var form = $(this).parents('form');
-        swal({
-                title: "Are you sure?",
-                text: "Once deleted, this process cannot be reverted!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
-                } else {
-                    return;
-                }
-            });
+    $(document).ready(function() {
+        $('#table').DataTable();
     });
 </script>
 @endsection

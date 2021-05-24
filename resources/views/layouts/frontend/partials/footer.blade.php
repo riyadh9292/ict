@@ -75,30 +75,14 @@
                     <div class="widget widget_gallery gallery-grid-4">
                         <h5 class="footer-title">Our Recent Gallery</h5>
                         <ul class="magnific-image">
+                            @foreach($photos as $photo)
+                            @php
+                            $path = '/'.$photo->path;
+                            @endphp
                             <li>
-                                <a href="{{ asset('assets/images/gallery/pic1.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic1.jpg') }}" alt=""></a>
+                                <a href="{{ URL::to('/') }}{{$path}}" class="magnific-anchor"><img style="height: 80px; width: 80px;" src="{{ URL::to('/') }}{{$path}}" alt=""></a>
                             </li>
-                            <li>
-                                <a href="{{ asset('assets/images/gallery/pic2.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic2.jpg') }}" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('assets/images/gallery/pic3.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic3.jpg') }}" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('assets/images/gallery/pic4.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic4.jpg') }}" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('assets/images/gallery/pic5.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic5.jpg') }}" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('assets/images/gallery/pic6.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic6.jpg') }}" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('assets/images/gallery/pic7.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic7.jpg') }}" alt=""></a>
-                            </li>
-                            <li>
-                                <a href="{{ asset('assets/images/gallery/pic8.jpg') }}" class="magnific-anchor"><img src="{{ asset('assets/images/gallery/pic8.jpg') }}" alt=""></a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

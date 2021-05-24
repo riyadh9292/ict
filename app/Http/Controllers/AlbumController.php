@@ -92,7 +92,8 @@ class AlbumController extends Controller
 
     public function gallery()
     {
+        $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
         $albums = Album::orderBy('updated_at' , 'DESC')->get();
-        return view('frontend.gallery' , compact('albums'));
+        return view('frontend.gallery' , compact('albums' , 'photos'));
     }
 }

@@ -61,6 +61,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-12">
+                                    <label class="col-form-label">Type</label>
+                                    <div>
+                                        <!-- <label for="exampleFormControlSelect1">Example select</label> -->
+                                        <select class="form-control" name="type" value="{{$article->type}}" required>
+                                            <option value="journal">Journal</option>
+                                            <option value="conference">Conference</option>
+                                            <option value="book">Book</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12">
                                     <label class="col-form-label">Year</label>
                                     <div>
                                         <input class="form-control" name="year" type="number" min="0" step="1" value="{{$article->year}}" required>

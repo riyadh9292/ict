@@ -50,6 +50,7 @@
                                             <th>Authors</th>
                                             <th>Publisher</th>
                                             <th>Details</th>
+                                            <th>Type</th>
                                             <th>Year</th>
                                             <th>Doi</th>
                                             <th>URL</th>
@@ -66,6 +67,7 @@
                                             <td>{{ $article->authors }}</td>
                                             <td>{{ $article->publisher }}</td>
                                             <td>{{ $article->details }}</td>
+                                            <td class="text-capitalize">{{ $article->type }}</td>
                                             <td>{{ $article->year }}</td>
                                             <td>{{ $article->doi }}</td>
                                             <td>{{ $article->url }}</td>

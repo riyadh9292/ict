@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Photo;
 
 class UserController extends Controller
 {
@@ -122,6 +123,7 @@ class UserController extends Controller
 
     public function profile(User $user)
     {
-        return view('frontend.people.teacher.profile' , compact('user'));
+        $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+        return view('frontend.people.teacher.profile' , compact('user' , 'photos'));
     }
 }

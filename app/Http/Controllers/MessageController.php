@@ -14,7 +14,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $type = auth()->user()->type;
+        $messages = Message::orderBy('created_at' , 'DESC')->get();
+        return view('messages.index' , compact('type' , 'messages'));
     }
 
     /**

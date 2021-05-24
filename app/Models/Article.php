@@ -18,6 +18,7 @@ class Article extends Model
         'doi',
         'url',
         'user_id',
+        'type',
     ];
 
     public function author()

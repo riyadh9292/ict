@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -45,6 +46,7 @@ class ArticleController extends Controller
             'doi' => $request->doi,
             'url' => $request->url,
             'user_id' => auth()->user()->id,
+            'type' => $request->type,
         ]);
         return redirect()->route('teacher.article.index')->with('success','Article Added Successfully');
     }
@@ -76,6 +78,7 @@ class ArticleController extends Controller
         $article->year = $request->year;
         $article->doi = $request->doi;
         $article->url = $request->url;
+        $article->type = $request->type;
         $article->update();
         return redirect()->route('teacher.article.index')->with('success','Article Updated Successfully');
     }
@@ -97,13 +100,15 @@ class ArticleController extends Controller
     //For Welcome Article Details
     public function details(Article $article)
     {
-        return view('frontend.articles.details', compact('article'));
+        $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+        return view('frontend.articles.details', compact('article' , 'photos'));
     }
 
     //For Articles Tab
     public function show_all()
     {
         $articles = Article::orderBy('year', 'desc')->get();
-        return view('frontend.articles.index', compact('articles'));
+        $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+        return view('frontend.articles.index', compact('articles' , 'photos'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notice;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -105,11 +106,13 @@ class NoticeController extends Controller
     public function show_all()
     {
         $notices = Notice::orderBy('created_at', 'desc')->get();
-        return view('frontend.notices.index', compact('notices'));
+        $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+        return view('frontend.notices.index', compact('notices' , 'photos'));
     }
 
     public function show(Notice $notice)
     {
-        return view('frontend.notices.details', compact('notice'));
+        $photos = Photo::orderBy('created_at', 'desc')->take(8)->get();
+        return view('frontend.notices.details', compact('notice' , 'photos'));
     }
 }

@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('publisher');
             $table->string('details')->nullable();
             $table->integer('year');
+            $table->string('type');
             $table->string('doi')->unique()->nullable();
             $table->string('url')->unique()->nullable();
             $table->bigInteger('user_id')->unsigned();

@@ -11,19 +11,19 @@
                 <div class="topbar-right">
                     <ul>
                         @if(auth()->check() && auth()->user()->type == 'admin')
-                        <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li><a class="btn btn-danger" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         @elseif(auth()->check() && auth()->user()->type == 'teacher')
-                        <li><a href="{{ route('teacher.dashboard') }}">Dashboard</a></li>
+                        <li><a class="btn btn-danger" href="{{ route('teacher.dashboard') }}">Dashboard</a></li>
                         @elseif(auth()->check() && auth()->user()->type == 'officer')
-                        <li><a href="{{ route('officer.dashboard') }}">Dashboard</a></li>
+                        <li><a class="btn btn-danger" href="{{ route('officer.dashboard') }}">Dashboard</a></li>
                         @else
-                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a class="btn btn-danger" href="{{ route('login') }}">Login</a></li>
                         @endif
                         @php
                         $users = \App\Models\User::count();
                         @endphp
                         @if($users == 0)
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a class="btn btn-success" href="{{ route('register') }}">Register</a></li>
                         @endif
                     </ul>
                 </div>
@@ -70,13 +70,16 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('welcome') }}">Home</a></li>
-                        <li><a href="#">General Information <i class="fa fa-chevron-down"></i></a>
+                        <li><a href="#">General Information<i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="#">About</a></li>
+                                <li><a href="{{ route('frontend.history') }}">History of the Department</a></li>
+                                <li><a href="{{ route('frontend.mission-and-vision') }}">Mission & Vision</a></li>
+                                <li><a href="{{ route('frontend.message-from-the-chairman') }}">Message from the Chairman</a></li>
+                                <li><a href="{{ route('frontend.facilities') }}">Facilities</a></li>
                                 <li><a href="#">Programs<i class="fa fa-angle-right"></i></a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Undergraduate</a></li>
-                                        <li><a href="#">Graduate</a></li>
+                                        <li><a href="{{ route('frontend.program.undergraduate') }}">Undergraduate</a></li>
+                                        <li><a href="{{ route('frontend.program.graduate') }}">Graduate</a></li>
                                     </ul>
                                 </li>
                             </ul>
