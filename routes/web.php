@@ -157,3 +157,5 @@ Route::group(['middleware' => 'auth'], function () {
         })->name('officer.dashboard');
     });
 });
+Route::post('/register', [UserController::class, 'register']);
+

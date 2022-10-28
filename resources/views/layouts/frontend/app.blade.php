@@ -12,6 +12,8 @@
 
     <!-- DESCRIPTION -->
     <meta name="description" content="Department of ICT, MBSTU" />
+ 
+   
 
     <!-- OG -->
     <meta property="og:title" content="Department of ICT, MBSTU" />
@@ -53,6 +55,18 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/revolution/css/navigation.css')}}">
     <!-- REVOLUTION SLIDER END -->
     @yield('styles')
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
 <body id="bg">

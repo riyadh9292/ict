@@ -35,10 +35,21 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="">
                         <div class="row">
                             @foreach($notices as $notice)
-                            <div class="col-md-12 col-lg-12 col-sm-12 m-b30">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="p-3 bg-warning rounded">
+                                    <span class="text-white text-[46px] font-bold notice-card-wrapper">29</span>
+                                    <span class="text-white text-xl font-bold">September</span>
+                                </div>
+                                <div class="">
+                                    <h5 class="text-[#515151] text-[19px] font-[600] pb-4">{{$notice->title}}</h5>
+                                    <span class="text-[#515151] text-sm pb-5">created by MBSTU</span>
+                                    <p class="text-sm text-[#515151]">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12 col-lg-12 col-sm-12 m-b30">
                                 <div class="cours-bx">
                                     <div class="info-bx text-center">
                                         <h5><a href="{{route('frontend.notice.details' , $notice->id)}}">{{$notice->title}}</a></h5>
@@ -57,7 +68,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             @endforeach
                         </div>
                         @if(count($notices) == 0)

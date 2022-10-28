@@ -51,6 +51,21 @@ class UserController extends Controller
 
         return redirect()->route('admin.user.index')->with('success', 'User Created Successfully.');
     }
+    public function register(Request $request)
+    {
+        $max_position = User::max('position');
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'type' =>'user',
+            'designation' => $request->designation,
+            'status' => 'active',
+            'password' => Hash::make($request->password),
+            'position' => 11,
+        ]);
+
+        return redirect()->back()->with('message', 'Registered Successfully.');
+    }
 
     /**
      * Display the specified resource.

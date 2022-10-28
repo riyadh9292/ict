@@ -8,6 +8,7 @@
                         <li><a href="mailto:department.ict@mbstu.ac.bd"><i class="fa fa-envelope-o"></i>department.ict@mbstu.ac.bd</a></li>
                     </ul>
                 </div>
+                <?php echo auth()->user() ?>
                 <div class="topbar-right">
                     <ul>
                         @if(auth()->check() && auth()->user()->type == 'admin')
@@ -16,7 +17,10 @@
                         <li><a class="btn btn-danger" href="{{ route('teacher.dashboard') }}">Dashboard</a></li>
                         @elseif(auth()->check() && auth()->user()->type == 'officer')
                         <li><a class="btn btn-danger" href="{{ route('officer.dashboard') }}">Dashboard</a></li>
+                        @elseif(auth()->check() && auth()->user()->type == 'user')
+                        <li><a class="btn btn-danger" href="{{ route('officer.dashboard') }}">Dashboard</a></li>
                         @else
+                        <li><a class="btn btn-danger" href="{{ route('register') }}">Register</a></li>
                         <li><a class="btn btn-danger" href="{{ route('login') }}">Login</a></li>
                         @endif
                         @php

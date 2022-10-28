@@ -10,6 +10,18 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <?php
+            if(session()->has("message")){
+                ?>
+ <div class="alert alert-success">{{session()->get("message") }} Click here to <a  href="{{ route('login') }}" class="underline cursor-pointer">login</a></div>
+                <?php
+            }
+            ?>
+           
+            
+
+           
+
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -25,7 +37,7 @@
                 <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required />
             </div>
 
-            <!-- <div class="mt-4">
+            <div class="mt-4">
                 <x-jet-label for="designation" value="{{ __('Designation') }}" />
                 <select id="designation" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" name="designation" :value="old('designation')" required>
                     <option value="professor">Professor</option>
@@ -34,8 +46,9 @@
                     <option value="lecturer">Lecturer</option>
                     <option value="assistant_registrar">Assistant Registrar</option>
                     <option value="section_officer">Section Officer</option>
+                    <option value="section_officer">Register</option>
                 </select>
-            </div> -->
+            </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
