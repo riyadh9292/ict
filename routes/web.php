@@ -8,6 +8,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\LogoutController;
 use App\Models\Notice;
 use App\Models\Article;
 use App\Models\User;
@@ -157,5 +158,11 @@ Route::group(['middleware' => 'auth'], function () {
         })->name('officer.dashboard');
     });
 });
+Route::group(['middleware' => ['auth']], function() {
+    /**
+    * Logout Route
+    */
+    Route::get('/logout',[LogoutController::class,'perform'])->name('logout.perform');
+ });
 Route::post('/register', [UserController::class, 'register']);
 

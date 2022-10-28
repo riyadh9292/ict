@@ -8,9 +8,12 @@
                         <li><a href="mailto:department.ict@mbstu.ac.bd"><i class="fa fa-envelope-o"></i>department.ict@mbstu.ac.bd</a></li>
                     </ul>
                 </div>
-                <?php echo auth()->user() ?>
+                <?php echo auth()->user()->id ?>
                 <div class="topbar-right">
                     <ul>
+                        @if(auth()->user()->id)
+                        <li><a class="underline text-yellow-600 cursor-pointer" href="{{ route('logout.perform') }}">Logout</a></li>
+                        @endif
                         @if(auth()->check() && auth()->user()->type == 'admin')
                         <li><a class="btn btn-danger" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         @elseif(auth()->check() && auth()->user()->type == 'teacher')
