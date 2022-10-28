@@ -29,55 +29,50 @@
     </div>
     <!-- Breadcrumb row END -->
     <!-- inner page banner END -->
-    <div class="content-block">
+    <div class="content-block 2xl:px-[60px]">
         <!-- About Us -->
         <div class="section-area section-sp1">
             <div class="container">
-                <div class="row">
 
                     <div class="">
-                        <div class="row">
-                            @foreach($notices as $notice)
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="p-3 bg-warning rounded">
-                                    <span class="text-white text-[46px] font-bold notice-card-wrapper">29</span>
+                            @foreach($notices as $notice)                        
+                
+                            <div  class="flex items-start pl-[15px] pr-[30px] py-[20px] rounded-[20px] gap-[28px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
+                                <div class="py-[32px] px-[17px] bg-[#FFB600] rounded-[30px] flex flex-col justify-center">
+                                    <span class="text-white text-center text-[46px] font-bold">{{$notice->created_at??28}}</span>
                                     <span class="text-white text-xl font-bold">September</span>
                                 </div>
-                                <div class="">
-                                    <h5 class="text-[#515151] text-[19px] font-[600] pb-4">{{$notice->title}}</h5>
-                                    <span class="text-[#515151] text-sm pb-5">created by MBSTU</span>
-                                    <p class="text-sm text-[#515151]">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+                                <div class="w-full flex items-center justify-between pt-2">
+                                    <div class="w-[75%]">
+                                    <h5 class="text-[#515151] text-[19px] font-[600] pb-2">{{$notice->title}}</h5>
+                                    <p class="text-[#515151] text-sm mb-3">created by MBSTU</p>
+                                    <p class="text-sm text-[#515151]">{{$notice->description}}</p>
+                                    <div class="pt-4"><a class="text-[#FFB600] text-sm hover:underline"  href="{{route('frontend.notice.details' , $notice->id)}}">View Details
+
+                                    </a>
+                                   </div>
                                 </div>
-                            </div>
-                            <!-- <div class="col-md-12 col-lg-12 col-sm-12 m-b30">
-                                <div class="cours-bx">
-                                    <div class="info-bx text-center">
-                                        <h5><a href="{{route('frontend.notice.details' , $notice->id)}}">{{$notice->title}}</a></h5>
-                                        <span>Click on the title to read more</span>
-                                    </div>
-                                    <div class="cours-more-info">
-                                        <div class="review">
-                                            <span>Published: {{$notice->created_at}}</span>
-                                        </div>
-                                        <div class="price">
-                                            @if($notice->file_path)
-                                            <a href="{{route('notice.download' , $notice->id)}}" class="btn">Download</a>
+                                    @if($notice->file_path)
+                                            <a href="{{route('notice.download' , $notice->id)}}" class="btn">                                   <img title="download" class="w-[71px] h-[71px] cursor-pointer" src="{{ asset('assets/images/notice/download.png') }}" alt="" />
+</a>
                                             @else
-                                            <span>No file to Download</span>
+                                            <span>                                    <img title="download" class="w-[71px] h-[71px] cursor-pointer" src="{{ asset('assets/images/notice/download.png') }}" alt="" />
+</span>
                                             @endif
-                                        </div>
-                                    </div>
+
                                 </div>
-                            </div> -->
+
+                            </div>
+                            
                             @endforeach
-                        </div>
+                       
                         @if(count($notices) == 0)
                         <div class="col-md-12 heading-bx text-center">
                             <h2 class="title-head text-uppercase m-b0">Alert <br /> <span> There is no notice at the moment..!</span></h2>
                         </div>
                         @endif
                     </div>
-                </div>
+                
             </div>
         </div>
     </div>
