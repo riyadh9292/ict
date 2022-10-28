@@ -8,11 +8,12 @@
                         <li><a href="mailto:department.ict@mbstu.ac.bd"><i class="fa fa-envelope-o"></i>department.ict@mbstu.ac.bd</a></li>
                     </ul>
                 </div>
-                <?php echo auth()->user()->id ?>
+
                 <div class="topbar-right">
                     <ul>
-                        @if(auth()->user()->id)
+                        @if(auth()?->user()?->id)
                         <li><a class="underline text-yellow-600 cursor-pointer" href="{{ route('logout.perform') }}">Logout</a></li>
+
                         @endif
                         @if(auth()->check() && auth()->user()->type == 'admin')
                         <li><a class="btn btn-danger" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
@@ -29,9 +30,9 @@
                         @php
                         $users = \App\Models\User::count();
                         @endphp
-                        @if($users == 0)
+                        <!-- @if($users == 0)
                         <li><a class="btn btn-success" href="{{ route('register') }}">Register</a></li>
-                        @endif
+                        @endif -->
                     </ul>
                 </div>
             </div>
@@ -75,7 +76,7 @@
                     <div class="menu-logo">
                         <a href="{{ route('welcome') }}"><img src="{{ asset('assets/images/MBSTU_Logo.png') }}" alt=""></a>
                     </div>
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav visible">
                         <li><a href="{{ route('welcome') }}">Home</a></li>
                         <li><a href="#">General Information<i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
